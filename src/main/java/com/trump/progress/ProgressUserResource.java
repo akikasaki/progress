@@ -21,11 +21,13 @@ public class ProgressUserResource {
         this.repositoryStorage = repositoryStorage;
     }
 
+    @CrossOrigin
     @GetMapping("/users")
     public List<ProgressUser> getAllProgressUsers(){
         return repositoryStorage.getProgressUserRepository().findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/users/{username},{password},{email}")
     public ProgressUser getUser(@PathVariable String username , @PathVariable String password, @PathVariable String email){
 
