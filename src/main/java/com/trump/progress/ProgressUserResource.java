@@ -1,13 +1,15 @@
 package com.trump.progress;
 
 
+import com.trump.progress.exception.ProgressUserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class ProgressUserResource {
 
@@ -24,11 +26,28 @@ public class ProgressUserResource {
         return repositoryStorage.getProgressUserRepository().findAll();
     }
 
-    public ProgressUser getUser(@RequestParam String username , @RequestParam String password, @RequestParam String email){
-        ProgressUser user = null;
+    @GetMapping("/users/{username},{password},{email}")
+    public ProgressUser getUser(@PathVariable String username , @PathVariable String password, @PathVariable String email){
 
 
-        return user;
+            ProgressUser user = repositoryStorage.getProgressUserRepository().findProgressUserByEmail(email);
+
+            if(user == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found", new ProgressUserNotFoundException("email"));
+
+            if(!user.getUsername().equals(username))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found", new ProgressUserNotFoundException("Username", "Are you sure this is the right username?"));
+
+            if(!user.getPassword().equals(password))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found", new ProgressUserNotFoundException("Password","Are you sure this is the right password?"));
+
+            return user;
+        }
+
+
+
+
+        //return user;
     }
 
-}
+
