@@ -33,12 +33,12 @@ public class InitialLoad implements CommandLineRunner {
 
         ///////// ADD PROGRESS BARS TO USERS IN THE DATABASE ///////////////////
 
-        ProgressBar progressBar1 = new ProgressBar("first progress bar user 1","Title1",100,10,LocalDate.now(),LocalDate.now().plusDays(10),user1);
-        ProgressBar progressBar2 = new ProgressBar("second progress bar user 1","Title2",50,27,LocalDate.now(),LocalDate.now().plusDays(15),user1);
-        ProgressBar progressBar3 = new ProgressBar("third progress bar user 1","Title3",75,17,LocalDate.now(),LocalDate.now().plusDays(5),user1);
-        ProgressBar progressBar4 = new ProgressBar("first progress bar user 2","Title1",40,10,LocalDate.now(),LocalDate.now().plusDays(10),user2);
-        ProgressBar progressBar5 = new ProgressBar("second progress bar user 2","Title2",250,27,LocalDate.now(),LocalDate.now().plusDays(15),user2);
-        ProgressBar progressBar6 = new ProgressBar("third progress bar user 2","Title3",365,220,LocalDate.now(),LocalDate.now().plusDays(5),user2);
+        ProgressBar progressBar1 = new ProgressBar("first progress bar user 1","Title1",100,10,LocalDate.now(),LocalDate.now().plusDays(10),true, user1);
+        ProgressBar progressBar2 = new ProgressBar("second progress bar user 1","Title2",50,27,LocalDate.now(),LocalDate.now().plusDays(15),true, user1);
+        ProgressBar progressBar3 = new ProgressBar("third progress bar user 1","Title3",75,17,LocalDate.now(),LocalDate.now().plusDays(5),false, user1);
+        ProgressBar progressBar4 = new ProgressBar("first progress bar user 2","Title1",40,10,LocalDate.now(),LocalDate.now().plusDays(10),true, user2);
+        ProgressBar progressBar5 = new ProgressBar("second progress bar user 2","Title2",250,27,LocalDate.now(),LocalDate.now().plusDays(15),false, user2);
+        ProgressBar progressBar6 = new ProgressBar("third progress bar user 2","Title3",365,220,LocalDate.now(),LocalDate.now().plusDays(5),true, user2);
         repositoryStorage.getProgressBarRepository().save(progressBar1);
         repositoryStorage.getProgressBarRepository().save(progressBar2);
         repositoryStorage.getProgressBarRepository().save(progressBar3);
