@@ -9,16 +9,6 @@ public class ProgressBar {
     public ProgressBar() {
     }
 
-    public ProgressBar(String description, String title, int increments, int currentIncrement, LocalDate startDate, LocalDate endDate, ProgressUser user) {
-        this.description = description;
-        this.title = title;
-        this.increments = increments;
-        this.currentIncrement = currentIncrement;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.user = user;
-    }
-
     public ProgressBar(String description, String title, int increments, int currentIncrement, LocalDate startDate, LocalDate endDate, boolean isActive, ProgressUser user) {
         this.description = description;
         this.title = title;

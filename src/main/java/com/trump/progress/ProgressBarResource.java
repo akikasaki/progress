@@ -1,5 +1,6 @@
 package com.trump.progress;
 
+import com.sun.javaws.progress.Progress;
 import com.trump.progress.exception.ProgressBarNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,14 +39,19 @@ public class ProgressBarResource {
         switch(filter){
 
             case "Active":
-                return repositoryStorage.getProgressBarRepository().findAllByActiveIsTrue();
+                return repositoryStorage.getProgressBarRepository().findAllByIsActiveIsTrue();
             case "Inactive":
-                return repositoryStorage.getProgressBarRepository().findAllByActiveIsFalse();
+                return repositoryStorage.getProgressBarRepository().findAllByIsActiveIsFalse();
             default:
 
         }
 
        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found",new ProgressBarNotFoundException());
+    }
+
+    @GetMapping("/progressBars")
+    public List<ProgressBar> getAllProgressBars(){
+        return repositoryStorage.getProgressBarRepository().findAll();
     }
 
 }
