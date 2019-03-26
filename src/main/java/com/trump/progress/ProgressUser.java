@@ -14,6 +14,7 @@ public class ProgressUser {
     private String password;
     private String email;
 
+
     public ProgressUser() {
     }
 
