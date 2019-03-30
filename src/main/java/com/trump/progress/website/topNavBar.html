@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="topNavBar">
 <head>
     <meta charset="UTF-8">
     <title>Progress Manager Navigation Bar</title>
@@ -8,9 +8,14 @@
 <body>
 <div class="topnavbar">
 
-    <a href="#journal">Journal</a>
-    <a href="#tasks">Tasks</a>
-    <a href="#progressBars">Progress Bars</a>
+    <a href="#journal" onclick="changePage(getJournalPageSrc())">Journal</a>
+    <a href="#tasks" onclick="changePage(getTasksPageSrc())">Tasks</a>
+    <a href="#progressBars" onclick="changePage(getProgressBarPageSrc())">Progress Bars</a>
+    <a href="#userPage" onclick="changePage(getUserPageSrc())">User</a>
 </div>
+
 </body>
+
+<script src="navbar.js"></script>
+
 </html>
